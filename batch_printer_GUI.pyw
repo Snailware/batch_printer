@@ -56,7 +56,7 @@ def main():
                                 format='%(asctime)s | %(levelname)s | %(filename)s | %(message)s', 
                                 level=log.INFO)
                 timer.start()
-                for i in range(1, int(quantity_to_print)):
+                for i in range(0, int(quantity_to_print)):
                     clicker.find_and_click(image_path=NET_WEIGHT_FIELD_IMAGE_PATH)
                     clicker.enter_string(input=weight_to_print, 
                                          overwrite=False)
