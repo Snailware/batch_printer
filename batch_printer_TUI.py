@@ -5,8 +5,8 @@ from pathlib import Path
 
 import pyautogui as pag
 
-from Autoclicker import Autoclicker
-from Timer import Timer
+from Autoclicker_OLD import Autoclicker
+from Timer_OLD import Timer
 from colorama import Fore, Style
 from rich.progress import Progress
 
@@ -50,20 +50,21 @@ def main():
             try:
                 clicker: Autoclicker = Autoclicker()
                 timer: Timer = Timer()
-                log.basicConfig(filename="bulk_label_printer.log", 
+                log.basicConfig(filename='batch_printer.log', 
                                 filemode='a', 
                                 format='%(asctime)s | %(levelname)s | %(filename)s | %(message)s', 
                                 level=log.INFO)
                 timer.start()
-                for i in range(0, int(quantity_to_print)):
-                    clicker.find_and_click_center(NET_WEIGHT_FIELD_IMAGE_PATH)
-                    clicker.enter_string(weight_to_print)
+                for i in range(1, int(quantity_to_print)):
+                    clicker.find_and_click(image_path=NET_WEIGHT_FIELD_IMAGE_PATH)
+                    clicker.enter_string(input=weight_to_print, 
+                                         overwrite=False)
                 timer.stop()
 
-                log.info(f"{gp.getuser()} printed {quantity_to_print} labels in {timer.verbose_elapsed_time()}")
-                pag.alert(f"Printing complete!\n\nQuantity printed: {quantity_to_print}\n\nElapsed time: {timer.verbose_elapsed_time()}")
-            except(Exception):
-                log.error(Exception)
+                log.info(f'{gp.getuser()} printed {quantity_to_print} labels in {timer.verbose_elapsed_time()}')
+                pag.alert(f'Printing complete!\n\nQuantity printed: {quantity_to_print}\n\nElapsed time: {timer.verbose_elapsed_time()}')
+            except Exception as e:
+                log.exception('an error occured: ')
     
     exit()
 
