@@ -44,7 +44,7 @@ class Autoclicker:
         x, y = None, None
         while x == None or y == None:
             try:
-                x, y = pag.locateCenterOnScreen(image_path, confidence=confidence)
+                x, y = pag.locateCenterOnScreen(str(image_path), confidence=confidence)
             except:
                 failed_attempts += 1
                 sleep(0.1)
