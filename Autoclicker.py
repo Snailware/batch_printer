@@ -50,7 +50,8 @@ class Autoclicker:
                 sleep(0.1)
             if failed_attempts > 50:
                 raise Exception("could not locate image on screen.")
-        pag.moveRel(x_offset, y_offset)
+        if (x_offset != 0 or y_offset != 0): 
+            pag.moveRel(x_offset, y_offset)
         pag.click(x, y)
 
     def find_field_and_enter_string(
