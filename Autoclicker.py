@@ -1,10 +1,9 @@
-import pyautogui as pag
-from time import sleep
 from pathlib import Path
-
-from pyperclip import paste
+from time import sleep
 
 import PIL
+import pyautogui as pag
+from pyperclip import paste
 
 
 class Autoclicker:
